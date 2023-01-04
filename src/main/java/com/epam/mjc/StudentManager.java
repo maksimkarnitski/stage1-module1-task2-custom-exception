@@ -6,7 +6,14 @@ public class StudentManager {
   private static final long[] IDs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
 
   public Student find(long studentID) {
-    return Student.getValueOf(studentID);
+    Student student = null;
+    try {
+      student = Student.getValueOf(studentID);
+    } catch (NullPointerException ex) {
+        ex.getMessage();
+        System.err.print(ex + String.valueOf(studentID));
+    }
+    return student;
   }
 
   public static void main(String[] args) {
